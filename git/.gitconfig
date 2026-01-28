@@ -1,0 +1,137 @@
+# Default identity
+# Using GitHub provided no reply email address
+[user]
+	name = Ramanath Nayak
+	email = 65753883+ramananayak@users.noreply.github.com
+
+# Zynga user
+[includeIf "gitdir:~/Repositories/Work/Zynga/"]
+	path = ~/.gitconfig-zynga
+
+[advice]
+	addEmptyPathspec = false
+	pushNonFastForward = false
+	statusHints = false
+
+# [alias]
+# 	a = add
+# 	ap = add -p
+# 	amc = am --continue
+# 	b = branch
+# 	bm = branch --merged
+# 	bnm = branch --no-merged
+# 	c = clone
+# 	ca = commit --amend
+# 	cane = commit --amend --no-edit
+# 	cf = commit --fixup
+# 	cm = commit --message
+# 	co = checkout
+# 	cob = checkout -b
+# 	com = checkout master
+# 	cp = cherry-pick
+# 	d = diff
+# 	dc = diff --cached
+# 	dom = diff origin/master
+# 	fo = fetch origin
+# 	fu = "!git log -n 16 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+# 	g = grep --line-number
+# 	ignore = update-index --assume-unchanged
+# 	unignore = update-index --no-assume-unchanged
+# 	ignored = !git ls-files -v | grep "^[[:lower:]]"
+# 	mbhom = merge-base HEAD origin/master
+# 	mff = merge --ff-only
+# 	ol = log --pretty=oneline
+# 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+# 	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+# 	p = push
+# 	po = push origin
+# 	pf = push --force-with-lease
+# 	prb = pull --rebase
+# 	r = restore
+# 	ra = rebase --abort
+# 	rc = rebase --continue
+# 	ri = rebase --interactive
+# 	rl = reflog
+# 	riom = rebase --interactive origin/master
+# 	rpo = remote prune origin
+# 	s = status -sb
+# 	ss = commit --message snapshot --no-gpg-sign
+# 	su = submodule update
+# 	wd = diff --patience --word-diff
+[color]
+	ui = auto
+[core]
+	editor = nvim
+	# Use custom `.gitignore` and `.gitattributes`.
+	excludesfile = ~/.gitignore
+
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error.
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	whitespace = trailing-space,space-before-tab,-indent-with-non-tab
+[diff]
+	algorithm = histogram
+	renamelimit = 8192
+	renames = copies
+[fetch]
+	fsckobjects = false
+	prune = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[gitget]
+	root = ~/src
+[init]
+	defaultBranch = main
+
+# URL shorthands
+
+# for pulls use HTTPS
+[url "https://github.com/"]
+	insteadOf = "git@github.com:"
+	insteadOf = "gh:"
+# for pushes use SSH
+[url "git@github.com:"]
+	pushInsteadOf = "github:"
+	pushInsteadOf = "https://github.com/"
+	pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+	pushInsteadOf = "github:"
+
+
+[url "https://gist.github.com"]
+	insteadOf = "git@gist.github.com:"
+	insteadOf = "gst:"
+[url "git@gist.github.com:"]
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "https://gist.github.com"
+	pushInsteadOf = "git://gist.github.com/"
+[url "git://gist.github.com/"]
+	insteadOf = "gist:"
+
+
+[url "git@github.com:ramananayak/"]
+	insteadof = "my:"
+
+[url "git@github-ca.corp.zynga.com:rnayak/"]
+	insteadOf = "zynga:"
+
+[pager]
+	branch = false
+	grep = false
+[push]
+	default = current
+[rebase]
+	autosquash = true
+	autostash = true
+[receive]
+	fsckobjects = true
+[status]
+	submoduleSummary = true
+[transfer]
+	fsckobjects = true
+[trim]
+	bases = master,gh-pages
+
