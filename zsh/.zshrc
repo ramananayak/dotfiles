@@ -13,6 +13,8 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/opt/libpq/bin:$PATH"
 # Zynga (only load if exists)
 [[ -f $HOME/.zsh_zynga ]] && source $HOME/.zsh_zynga
 
+# move mycli history to below path
+export MYCLI_HISTFILE="~/.cache/mycli/.mycli-history"
 
 # Load Plugins
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

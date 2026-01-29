@@ -48,7 +48,7 @@ $HOME/idea/org-1/.gitconfig
   sshCommand = "ssh -i ~/.ssh/my_org1_account_id_rsa"
 ```
 
-If you wan to setup local directory specific username and email then,
+If you want to setup local directory specific username and email then,
 
 ```bash
 git config --local user.email "name+github@gmail.com"
