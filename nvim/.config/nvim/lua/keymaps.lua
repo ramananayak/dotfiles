@@ -22,6 +22,9 @@ keymap("n", "<leader>rr", ":wincmd r<CR>")
 keymap("n", "<leader>w", ":w<cr>", { silent = false, noremap = true })
 keymap({ "n", "t" }, "<leader>q", ":q<cr>", { silent = false, noremap = true })
 
+-- create a new buffer
+keymap("n", "<leader>fn", ":enew<CR>", {desc = "New File"})
+
 -- Navigate through buffers
 keymap("n", "<S-l>", ":bnext<CR>", { silent = false })
 keymap("n", "<S-h>", ":bprevious<CR>", { silent = false })
@@ -61,7 +64,9 @@ keymap("n", "<leader>fg", '<cmd>FzfLua live_grep<CR>')
 keymap("n", "<leader>gs", '<cmd>Git<CR>', { silent = true, noremap = true })
 keymap("n", "<leader>gp", '<cmd>Git push<CR>', { silent = false, noremap = true })
 
+-- oil
+keymap("n", "-", "<CMD>Oil --float <CR>", { desc = "Open parent directory" })
+
 -- Exit terminal with Esc
 keymap("t", "<Esc>", "<C-\\><C-N>")
-
 
