@@ -3,5 +3,5 @@
 **/.DS_Store
 
 # Work
-zsh/.zsh_zynga
+zsh/zynga.zsh
 git/.gitconfig-zynga

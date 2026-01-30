@@ -9,11 +9,10 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias cdl="cd ~/Downloads"
-alias cdt="cd ~/Desktop"
-alias cp="cd ~/Projects"
-alias cr="cd ~/Repositories"
-alias cdat="cd ~/Repositories/Dataworkflows"
+alias cdo="cd ~/Downloads"
+alias cde="cd ~/Desktop"
+alias cpr="cd ~/Projects"
+alias cre="cd ~/Repositories"
 
 # Docker
 alias dco="docker compose"
