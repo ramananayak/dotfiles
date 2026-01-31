@@ -1,7 +1,8 @@
 vim.pack.add({
-	{ src = 'https://github.com/catppuccin/nvim',        name = 'catppuccin' },
+	{ src = 'https://github.com/catppuccin/nvim',                  name = 'catppuccin' },
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/williamboman/mason-lspconfig.nvim" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{
 		src = "https://github.com/saghen/blink.cmp",
@@ -12,9 +13,26 @@ vim.pack.add({
 	{ src = "https://github.com/tpope/vim-fugitive" },
 })
 
+vim.cmd("packadd mason-lspconfig.nvim")
+
 require("catppuccin").setup({ flavour = "mocha" })
-require('gitsigns').setup({ signcolumn = false })
+require('gitsigns').setup({
+	signcolumn = true,
+	current_line_blame = false,
+})
 require("mason").setup({})
+require("mason-lspconfig").setup({
+	ensure_installed = { "lua_ls", "pyright", "ruff", "marksman" },
+})
+
+-- Install formatters
+local mr = require("mason-registry")
+for _, tool in ipairs({ "prettier" }) do
+	local p = mr.get_package(tool)
+	if not p:is_installed() then
+		p:install()
+	end
+end
 
 require('blink.cmp').setup({
 	fuzzy = { implementation = 'prefer_rust_with_warning' },

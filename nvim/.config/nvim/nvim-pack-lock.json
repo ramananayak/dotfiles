@@ -19,7 +19,7 @@
     },
     "mason-lspconfig.nvim": {
       "rev": "c953789db7fd28eafe5eb5659846d34b5024b3cc",
-      "src": "https://github.com/mason-org/mason-lspconfig.nvim"
+      "src": "https://github.com/williamboman/mason-lspconfig.nvim"
     },
     "mason.nvim": {
       "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",

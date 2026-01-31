@@ -9,7 +9,15 @@ keymap("n", "U", "<C-r>")
 -- after a search, press escape to clear highlights
 keymap("n", "<Esc>", ":nohl<CR>")
 
-keymap({ "n", "v", "x" }, "<leader>lf", vim.lsp.buf.format, { desc = "Format current buffer" })
+keymap({ "n", "v", "x" }, "<leader>lf", function()
+	local ft = vim.bo.filetype
+	if vim.tbl_contains({ "markdown", "json", "yaml" }, ft) then
+		vim.cmd("!prettier --write " .. vim.fn.expand("%"))
+		vim.cmd("edit!")
+	else
+		vim.lsp.buf.format()
+	end
+end, { desc = "Format current buffer" })
 
 -- Swap between split buffers
 keymap("n", "<C-h>", ":wincmd h<CR>")
@@ -23,7 +31,7 @@ keymap("n", "<leader>w", ":w<cr>", { silent = false, noremap = true })
 keymap({ "n", "t" }, "<leader>q", ":q<cr>", { silent = false, noremap = true })
 
 -- create a new buffer
-keymap("n", "<leader>fn", ":enew<CR>", {desc = "New File"})
+keymap("n", "<leader>fn", ":enew<CR>", { desc = "New File" })
 
 -- Navigate through buffers
 keymap("n", "<S-l>", ":bnext<CR>", { silent = false })
@@ -69,4 +77,3 @@ keymap("n", "-", "<CMD>Oil --float <CR>", { desc = "Open parent directory" })
 
 -- Exit terminal with Esc
 keymap("t", "<Esc>", "<C-\\><C-N>")
-
