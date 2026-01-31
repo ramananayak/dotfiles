@@ -6,18 +6,20 @@ setopt HIST_IGNORE_DUPS     # Ignore duplicate commands in history
 setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicates first when trimming history
 setopt HIST_IGNORE_ALL_DUPS # Delete old recorded entry if new entry is a duplicate
 
-# Move history to .cache directory
-HISTFILE=~/.cache/zsh/.zsh_history
 
-# move mycli history to below path
+# Move history to .cache directory
+# Zsh
+export HISTFILE="~/.cache/zsh/.zsh_history"
+# psql
+export PSQL_HISTORY="~/.cache/psql/.psql_history"
+# mycli
 export MYCLI_HISTFILE="~/.cache/mycli/.mycli-history"
 
+# Source other zsh configs
 # My aliases
 [[ -f $HOME/aliases.zsh ]] && source $HOME/aliases.zsh
-
 # My exports
 # [[ -f $HOME/exports.zsh ]] && source $HOME/exports.zsh
-
 # Zynga (only load if exists)
 [[ -f $HOME/zynga.zsh ]] && source $HOME/zynga.zsh
 
