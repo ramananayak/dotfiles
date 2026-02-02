@@ -38,6 +38,12 @@ alias ke="kubectl exec -it"
 alias kcns='kubectl config set-context --current --namespace'
 alias podname=''
 
+# Database
+# Quick view of database command history
+alias psql_log="tail -n 20 ~/.cache/psql/.psql_history"
+alias mysql_log="tail -n 20 ~/.cache/.mysql_history"
+alias sqlite_log="tail -n 20 ~/.cache/sqlite/.sqlite_history"
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"

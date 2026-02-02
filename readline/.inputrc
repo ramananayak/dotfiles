@@ -1,0 +1,3 @@
+# Make Tab completion faster and case-insensitive
+set completion-ignore-case on
+set show-all-if-ambiguous on

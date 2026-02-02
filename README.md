@@ -11,7 +11,7 @@ cd $HOME/dotfiles
 stow -nv --dotfiles kitty tmux nvim git zsh
 
 # execute
-# ignore - pgcli , litecli
+# ignore - pgcli , mycli, litecli (disabled)
 stow -nv --dotfiles kitty tmux nvim git zsh
 
 # unstow

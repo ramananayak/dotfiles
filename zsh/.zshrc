@@ -2,17 +2,17 @@
 eval "$(starship init zsh)" 
 
 # Add homebrew to the path
-export PATH="/opt/homebrew/bin:/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/opt/libpq/bin:/opt/homebrew/opt/mysql-client/bin:$PATH"
 
 # Move history to .cache directory
 # Zsh
 export HISTFILE="$HOME/.cache/zsh/.zsh_history"
 export HISTSIZE=10000
 export SAVEHIST=10000
-# psql
-export PSQL_HISTORY="$HOME/.cache/psql/.psql_history"
-# mycli
-export MYCLI_HISTFILE="$HOME/.cache/mycli/.mycli-history"
+# mysql
+export MYSQL_HISTFILE="$HOME/.cache/mysql/.mysql_history"
+# sqlite
+export SQLITE_HISTORY="$HOME/.cache/sqlite/.sqlite_history"
 
 # Zsh options for performance and usability
 setopt HIST_IGNORE_DUPS     # Ignore duplicate commands in history

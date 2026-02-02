@@ -1,0 +1,15 @@
+\set QUIET 1
+
+-- History settings
+\set HISTFILE ~/.cache/psql/.psql_history
+\set HISTSIZE 5000
+\set HISTCONTROL ignoredups
+
+-- Table formatting (No comments on these lines)
+\pset null '[NULL]'
+\pset border 2
+\pset linestyle unicode
+\x auto
+\timing on
+
+\set QUIET 0
