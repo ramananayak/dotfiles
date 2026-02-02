@@ -11,6 +11,7 @@ cd $HOME/dotfiles
 stow -nv --dotfiles kitty tmux nvim git zsh
 
 # execute
+# ignore - pgcli , litecli
 stow -nv --dotfiles kitty tmux nvim git zsh
 
 # unstow
@@ -34,6 +35,13 @@ cp $HOME/.cache
 ```
 
 Software Lists
-- [Obsidian - for notes](https://obsidian.md/)
 - [Firefox browser, with profiles](https://www.firefox.com/en-US/)
+- [Linear Mouse](https://linearmouse.app/)
+- [Docker](https://www.docker.com/)
+- [Postman](https://www.postman.com/)
+- [Requestly - Lightweight API Client](https://requestly.com/)
+- [Obsidian - for notes](https://obsidian.md/)
+- [Readest](https://readest.com/)
+- [ollama](https://ollama.com/)
+- [Superwhisper](https://superwhisper.com/)
 

@@ -34,8 +34,8 @@ keymap({ "n", "t" }, "<leader>q", ":q<cr>", { silent = false, noremap = true })
 keymap("n", "<leader>fn", ":enew<CR>", { desc = "New File" })
 
 -- Navigate through buffers
-keymap("n", "<S-l>", ":bnext<CR>", { silent = false })
-keymap("n", "<S-h>", ":bprevious<CR>", { silent = false })
+keymap("n", "[b", ":bnext<CR>", { silent = false })
+keymap("n", "]b", ":bprevious<CR>", { silent = false })
 
 -- Close currently active buffer
 keymap("n", "<C-c>", ":bwipeout<CR>", { silent = false })
