@@ -21,11 +21,11 @@ setopt HIST_IGNORE_ALL_DUPS # Delete old recorded entry if new entry is a duplic
 
 # Source other zsh configs
 # My aliases
-[[ -f $HOME/aliases.zsh ]] && source $HOME/aliases.zsh
+[[ -f $HOME/.aliases.zsh ]] && source $HOME/.aliases.zsh
 # My exports
-# [[ -f $HOME/exports.zsh ]] && source $HOME/exports.zsh
+# [[ -f $HOME/.exports.zsh ]] && source $HOME/.exports.zsh
 # Zynga (only load if exists)
-[[ -f $HOME/zynga.zsh ]] && source $HOME/zynga.zsh
+[[ -f $HOME/.zynga.zsh ]] && source $HOME/.zynga.zsh
 
 # Load Plugins
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

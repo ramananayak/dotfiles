@@ -111,6 +111,9 @@
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
 
+# Zynga corporate GitHub SSH
+[url "git@github-ca.corp.zynga.com:"]
+	insteadOf = https://github-ca.corp.zynga.com/
 
 [url "git@github.com:ramananayak/"]
 	insteadof = "my:"
@@ -134,4 +137,3 @@
 	fsckobjects = true
 [trim]
 	bases = master,gh-pages
-
