@@ -103,6 +103,29 @@ require("oil").setup({
 		["gx"] = "actions.open_external",
 		["g."] = { "actions.toggle_hidden", mode = "n" },
 		["g\\"] = { "actions.toggle_trash", mode = "n" },
+		["gy"] = {
+			callback = function()
+				local oil = require("oil")
+				local entry = oil.get_cursor_entry()
+				local dir = oil.get_current_dir()
+				if entry and dir then
+					vim.fn.setreg("+", dir .. entry.name)
+					vim.notify("Yanked: " .. dir .. entry.name)
+				end
+			end,
+			desc = "Yank absolute path",
+		},
+		["gY"] = {
+			callback = function()
+				local oil = require("oil")
+				local entry = oil.get_cursor_entry()
+				if entry then
+					vim.fn.setreg("+", entry.name)
+					vim.notify("Yanked: " .. entry.name)
+				end
+			end,
+			desc = "Yank relative path",
+		},
 	},
 	view_options = {
 		show_hidden = true,

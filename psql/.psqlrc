@@ -5,10 +5,8 @@
 \set HISTSIZE 5000
 \set HISTCONTROL ignoredups
 
--- Table formatting (No comments on these lines)
+-- Table formatting
 \pset null '[NULL]'
-\pset border 2
-\pset linestyle unicode
 \x auto
 \timing on
 

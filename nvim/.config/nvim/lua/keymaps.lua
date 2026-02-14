@@ -10,13 +10,13 @@ keymap("n", "U", "<C-r>")
 keymap("n", "<Esc>", ":nohl<CR>")
 
 keymap({ "n", "v", "x" }, "<leader>lf", function()
-	local ft = vim.bo.filetype
-	if vim.tbl_contains({ "markdown", "json", "yaml" }, ft) then
-		vim.cmd("!prettier --write " .. vim.fn.expand("%"))
-		vim.cmd("edit!")
-	else
-		vim.lsp.buf.format()
-	end
+    local ft = vim.bo.filetype
+    if vim.tbl_contains({ "markdown", "json", "yaml" }, ft) then
+        vim.cmd("!prettier --write " .. vim.fn.expand("%"))
+        vim.cmd("edit!")
+    else
+        vim.lsp.buf.format()
+    end
 end, { desc = "Format current buffer" })
 
 -- Swap between split buffers
@@ -77,3 +77,12 @@ keymap("n", "-", "<CMD>Oil --float <CR>", { desc = "Open parent directory" })
 
 -- Exit terminal with Esc
 keymap("t", "<Esc>", "<C-\\><C-N>")
+
+-- LSP keybindings
+keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+keymap("n", "gr", vim.lsp.buf.references, { desc = "Find references" })
+keymap("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+keymap("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
+keymap("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
