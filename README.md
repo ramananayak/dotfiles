@@ -12,7 +12,7 @@ stow -nv --dotfiles kitty tmux nvim git zsh
 
 # execute
 # ignore - pgcli , mycli, litecli (disabled)
-stow -nv --dotfiles kitty tmux nvim git zsh
+stow -v --dotfiles kitty tmux nvim git zsh
 
 # unstow
 stow -D zsh
@@ -42,6 +42,6 @@ Software Lists
 - [Requestly - Lightweight API Client](https://requestly.com/)
 - [Obsidian - for notes](https://obsidian.md/)
 - [Readest](https://readest.com/)
-- [ollama](https://ollama.com/)
+- [llama.cpp](https://github.com/ggml-org/llama.cpp)
 - [Superwhisper](https://superwhisper.com/)
 

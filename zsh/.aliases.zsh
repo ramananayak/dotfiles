@@ -176,3 +176,5 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # Print each PATH entry on a separate line
 # alias path='echo -e ${PATH//:/\\n}'
 
+# Use local llm model with llama.cpp
+alias qwen='llama-cli -m ~/Library/Caches/llama.cpp/Qwen_Qwen3-8B-GGUF_Qwen3-8B-Q8_0.gguf --jinja --color auto -ngl 99 -fa auto -sm row --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 1.5 -c 40960 -n 32768 --no-context-shift'
