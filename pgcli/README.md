@@ -1,9 +1,10 @@
-# My CLI configs to access Postgress and Redshift database
+# pgcli for PostgreSQL and Redshift
 
-[pgcli for Postgres and Redshift](https://www.pgcli.com/)
+[pgcli](https://www.pgcli.com/) — a PostgreSQL client with auto-completion and syntax highlighting.
 
-!Note
-move logs to .cache directory by setting this
-`export MYCLI_HISTFILE="~/.cache/pgcli/history"`
+To move the history file to `.cache/`, set `PGCLI_HISTFILE` in `.exports.zsh`:
+```zsh
+export PGCLI_HISTFILE="$HOME/.cache/pgcli/history"
+```
 
-Copy history file before you move to a new system
+Copy the history file before moving to a new system.

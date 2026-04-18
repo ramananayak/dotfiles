@@ -26,15 +26,16 @@ setopt HIST_REDUCE_BLANKS     # Remove extra blanks from commands
 # ============================================================================
 # Source External Configs
 # ============================================================================
+[[ -f $HOME/.exports.zsh ]] && source $HOME/.exports.zsh
 [[ -f $HOME/.aliases.zsh ]] && source $HOME/.aliases.zsh
 [[ -f $HOME/.zynga.zsh ]] && source $HOME/.zynga.zsh
 
 # ============================================================================
 # Plugin Loading
 # ============================================================================
-BREW_PREFIX=$(brew --prefix)
-source $BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+BREW_PREFIX=/opt/homebrew
+[[ -f $BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source $BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -f $BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source $BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ============================================================================
 # Prompt Initialization

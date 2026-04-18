@@ -19,8 +19,6 @@ local function hl(group, text)
 end
 
 -- set (or link) the dim highlight once
-vim.api.nvim_set_hl(0, config.placeholder_hl, {}) -- create if missing
--- Link to Comment to keep it dim; adjust as you like
 vim.api.nvim_set_hl(0, config.placeholder_hl, { link = "Comment" })
 
 local function filepath()
@@ -73,6 +71,7 @@ local function diagnostics()
     return "[" .. status .. "]"
 end
 
+-- Statusline is intentionally global: referenced via v:lua.Statusline in statusline strings
 Statusline = {}
 
 function Statusline.active()

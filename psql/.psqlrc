@@ -7,7 +7,6 @@
 
 -- Table formatting
 \pset null '[NULL]'
-\x auto
 \timing on
 
 \set QUIET 0

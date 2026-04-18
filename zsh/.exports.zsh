@@ -18,7 +18,7 @@ export LC_ALL='en_US.UTF-8';
 export PYTHONIOENCODING='UTF-8';
 
 # Highlight section titles in manual pages.
-export LESS_TERMCAP_md="${yellow}";
+export LESS_TERMCAP_md="$(tput bold; tput setaf 3)";
 
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
@@ -26,6 +26,9 @@ export MANPAGER='less -X';
 # Avoid issues with `gpg` as installed via Homebrew.
 # https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty);
+
+# Kubernetes
+export KUBECONFIG=~/.kube/config
 
 # Hide the “default interactive shell is now zsh” warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1;

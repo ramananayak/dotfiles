@@ -1,8 +1,5 @@
 vim.pack.add({
-    { src = 'https://github.com/catppuccin/nvim',                  name = 'catppuccin' },
-    { src = 'https://github.com/neovim/nvim-lspconfig' },
-    { src = "https://github.com/mason-org/mason.nvim" },
-    { src = "https://github.com/williamboman/mason-lspconfig.nvim" },
+    { src = 'https://github.com/catppuccin/nvim', name = 'catppuccin' },
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
     {
         src = "https://github.com/saghen/blink.cmp",
@@ -12,29 +9,15 @@ vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
     { src = "https://github.com/ibhagwan/fzf-lua" },
     { src = "https://github.com/tpope/vim-fugitive" },
+    { src = "https://github.com/nvim-lua/plenary.nvim" },
+    { src = "https://github.com/olimorris/codecompanion.nvim" },
 })
-
-vim.cmd("packadd mason-lspconfig.nvim")
 
 require("catppuccin").setup({ flavour = "mocha" })
 require('gitsigns').setup({
     signcolumn = true,
     current_line_blame = false,
 })
-require("mason").setup({})
-require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "ruff", "marksman" },
-})
-
--- Install formatters
-local mr = require("mason-registry")
-for _, tool in ipairs({ "prettier" }) do
-    local p = mr.get_package(tool)
-    if not p:is_installed() then
-        p:install()
-    end
-end
-
 require('blink.cmp').setup({
     fuzzy = { implementation = 'prefer_rust_with_warning' },
     signature = { enabled = true },
@@ -76,7 +59,6 @@ require('blink.cmp').setup({
 
     sources = { default = { "lsp" } }
 })
-
 
 require("oil").setup({
     default_file_explorer = true,
@@ -164,6 +146,63 @@ require("fzf-lua").setup({
             ["ctrl-n"] = actions.toggle_ignore,
             ["ctrl-h"] = actions.toggle_hidden,
             ["enter"] = actions.file_edit_or_qf,
+        },
+    },
+})
+
+require("codecompanion").setup({
+    display = {
+        chat = {
+            window = {
+                layout = "vertical",
+                position = "right",
+                width = 0.35,
+            },
+            fold_context = true,
+            show_header_separator = false,
+            show_token_count = true,
+        },
+        action_palette = {
+            opts = {
+                show_preset_actions = false,
+                show_preset_prompts = false,
+            },
+        },
+    },
+    interactions = {
+        chat = {
+            adapter = "sage",
+            roles = {
+                user = "Ramanath",
+                llm = function(adapter)
+                    return "Sage (" .. adapter.formatted_name .. ")"
+                end,
+            },
+            opts = {
+                completion_provider = "blink",
+            },
+            slash_commands = {
+                ["file"] = {
+                    opts = { provider = "fzf_lua" },
+                },
+            },
+        },
+        inline = { adapter = "sage" },
+        agent  = { adapter = "sage" },
+    },
+    adapters = {
+        acp = {
+            sage = function()
+                return require("codecompanion.adapters.acp").extend(
+                    require("codecompanion.adapters.acp.gemini_cli"),
+                    {
+                        name = "sage",
+                        commands = {
+                            default = { "sage", "acp" },
+                        },
+                    }
+                )
+            end,
         },
     },
 })

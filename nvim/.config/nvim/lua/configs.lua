@@ -25,12 +25,9 @@ vim.opt.hlsearch = false  -- Turn off highlight after search is done
 -- System & Performance
 vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard (copy/paste to other apps)
 vim.opt.mouse = "a"               -- Enable mouse support (scrolling/clicking)
-vim.opt.swapfile = false          -- Don't create swap files
-vim.opt.undofile = true           -- Persistent undo: remembers changes after closing file
--- vim.opt.updatetime = 250          -- Faster response time for UI/LSP (default is 4000ms)
+vim.opt.swapfile = false    -- Don't create swap files
+vim.opt.undofile = true    -- Persistent undo: remembers changes after closing file
+vim.opt.updatetime = 250   -- Faster response time for UI/LSP (default is 4000ms)
 
 -- Theme
-vim.cmd.colorscheme("catppuccin") -- Apply your chosen colorscheme
-
--- Statusline with git info
-vim.opt.statusline = "%f %h%m%r%=%{get(b:,'gitsigns_head','')} %{get(b:,'gitsigns_status','')} %y %l:%c %P"
+vim.cmd.colorscheme("catppuccin")

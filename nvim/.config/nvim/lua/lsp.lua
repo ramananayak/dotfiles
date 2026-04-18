@@ -4,6 +4,6 @@ for _, server in ipairs({ "lua_ls", "pyright", "ruff", "marksman" }) do
 	local ok, config = pcall(dofile, config_path)
 	if ok then
 		vim.lsp.config(server, config)
+		vim.lsp.enable(server)
 	end
-	vim.lsp.enable(server)
 end

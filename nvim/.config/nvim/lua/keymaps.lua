@@ -12,8 +12,16 @@ keymap("n", "<Esc>", ":nohl<CR>")
 keymap({ "n", "v", "x" }, "<leader>lf", function()
     local ft = vim.bo.filetype
     if vim.tbl_contains({ "markdown", "json", "yaml" }, ft) then
-        vim.cmd("!prettier --write " .. vim.fn.expand("%"))
-        vim.cmd("edit!")
+        local file = vim.fn.expand("%")
+        vim.system({ "prettier", "--write", file }, {}, function(result)
+            vim.schedule(function()
+                if result.code == 0 then
+                    vim.cmd("edit!")
+                else
+                    vim.notify("prettier failed: " .. (result.stderr or ""), vim.log.levels.ERROR)
+                end
+            end)
+        end)
     else
         vim.lsp.buf.format()
     end
@@ -34,8 +42,8 @@ keymap({ "n", "t" }, "<leader>q", ":q<cr>", { silent = false, noremap = true })
 keymap("n", "<leader>fn", ":enew<CR>", { desc = "New File" })
 
 -- Navigate through buffers
-keymap("n", "[b", ":bnext<CR>", { silent = false })
-keymap("n", "]b", ":bprevious<CR>", { silent = false })
+keymap("n", "[b", ":bprevious<CR>", { silent = false })
+keymap("n", "]b", ":bnext<CR>", { silent = false })
 
 -- Close currently active buffer
 keymap("n", "<C-c>", ":bwipeout<CR>", { silent = false })
@@ -53,7 +61,7 @@ keymap("n", "<leader>y", '"+y')
 keymap("v", "<leader>y", '"+y')
 keymap("n", "<leader>Y", '"+Y')
 
--- Put/Paaste
+-- Put/Paste
 keymap("n", "<leader>p", '"+p')
 
 -- Move selection up and down
@@ -86,3 +94,8 @@ keymap("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
 keymap("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
 keymap("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
 keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+
+-- codecompanion (sage AI)
+keymap({ "n", "v" }, "<leader>ac", "<cmd>CodeCompanionChat<CR>", { desc = "CodeCompanion: open chat" })
+keymap({ "n", "v" }, "<leader>ai", "<cmd>CodeCompanionChat Add<CR>", { desc = "CodeCompanion: add selection to chat" })
+keymap("n", "<leader>at", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "CodeCompanion: toggle chat" })
