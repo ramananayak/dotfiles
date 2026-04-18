@@ -64,6 +64,7 @@
 	swc = switch -c
 	ss = commit --message snapshot --no-gpg-sign
 	su = submodule update
+	clean-dry = clean -fdn
 	undo = reset --soft HEAD~1
 	unstage = restore --staged
 	wd = diff --patience --word-diff

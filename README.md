@@ -35,6 +35,7 @@ cp $HOME/.cache
 ```
 
 Software Lists
+
 - [Firefox browser, with profiles](https://www.firefox.com/en-US/)
 - [Linear Mouse](https://linearmouse.app/)
 - [Docker](https://www.docker.com/)
@@ -44,4 +45,3 @@ Software Lists
 - [Readest](https://readest.com/)
 - [llama.cpp](https://github.com/ggml-org/llama.cpp)
 - [Superwhisper](https://superwhisper.com/)
-
