@@ -6,6 +6,15 @@ keymap("n", "<leader>", "<Nop>")
 -- Redo remap
 keymap("n", "U", "<C-r>")
 
+-- Toggle line wrap
+keymap("n", "<leader>tw", function()
+    vim.opt.wrap = not vim.opt.wrap:get()
+end, { desc = "Toggle wrap" })
+
+-- Navigate visual lines when wrap is on
+keymap({ "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
 -- after a search, press escape to clear highlights
 keymap("n", "<Esc>", ":nohl<CR>")
 
