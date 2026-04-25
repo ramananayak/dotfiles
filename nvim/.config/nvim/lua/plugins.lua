@@ -13,6 +13,7 @@ vim.pack.add({
     { src = "https://github.com/olimorris/codecompanion.nvim" },
 })
 
+require("nvim-web-devicons").setup()
 require("catppuccin").setup({ flavour = "mocha" })
 require('gitsigns').setup({
     signcolumn = true,

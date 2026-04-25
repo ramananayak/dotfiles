@@ -1,3 +1,8 @@
+-- Register markdown.mdx filetype
+vim.filetype.add({
+    extension = { mdx = 'markdown.mdx' },
+})
+
 -- Leader Key (Set this first!)
 vim.g.mapleader = " " -- Use space as the primary leader key
 

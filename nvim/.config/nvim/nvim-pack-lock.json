@@ -2,7 +2,7 @@
   "plugins": {
     "avante.nvim": {
       "rev": "8c84af0f09e5d9058362ac58401a8e7b047d826e",
-      "src": "https://github.com/yetone/avante.nvim"
+      "src": "git@github.com:yetone/avante.nvim"
     },
     "blink.cmp": {
       "rev": "b19413d214068f316c78978b08264ed1c41830ec",
@@ -11,7 +11,7 @@
     },
     "blink.compat": {
       "rev": "1454f14a8d855a578ceeba77c62538fa1459a67c",
-      "src": "https://github.com/Saghen/blink.compat"
+      "src": "git@github.com:Saghen/blink.compat"
     },
     "catppuccin": {
       "rev": "beaf41a30c26fd7d6c386d383155cbd65dd554cd",
@@ -31,23 +31,23 @@
     },
     "mason-lspconfig.nvim": {
       "rev": "c953789db7fd28eafe5eb5659846d34b5024b3cc",
-      "src": "https://github.com/williamboman/mason-lspconfig.nvim"
+      "src": "git@github.com:williamboman/mason-lspconfig.nvim"
     },
     "mason.nvim": {
       "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
-      "src": "https://github.com/mason-org/mason.nvim"
+      "src": "git@github.com:mason-org/mason.nvim"
     },
     "nui.nvim": {
       "rev": "de740991c12411b663994b2860f1a4fd0937c130",
-      "src": "https://github.com/MunifTanjim/nui.nvim"
+      "src": "git@github.com:MunifTanjim/nui.nvim"
     },
     "nvim-lspconfig": {
       "rev": "419b082102fa813739588dd82e19a8b6b2442855",
-      "src": "https://github.com/neovim/nvim-lspconfig"
+      "src": "git@github.com:neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+      "src": "git@github.com:nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
       "rev": "746ffbb17975ebd6c40142362eee1b0249969c5c",
@@ -63,7 +63,7 @@
     },
     "render-markdown.nvim": {
       "rev": "0fd43fb4b1f073931c4b481f5f3b7cea3749e190",
-      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+      "src": "git@github.com:MeanderingProgrammer/render-markdown.nvim"
     },
     "vim-fugitive": {
       "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
