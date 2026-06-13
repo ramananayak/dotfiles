@@ -1,3 +1,9 @@
 # Make Tab completion faster and case-insensitive
 set completion-ignore-case on
 set show-all-if-ambiguous on
+
+# Vi keybindings for psql only
+$if psql
+set editing-mode vi
+set keymap vi-command
+$endif
