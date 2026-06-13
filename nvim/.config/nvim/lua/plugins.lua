@@ -164,6 +164,7 @@ require("codecompanion").setup({
             show_token_count = true,
         },
         action_palette = {
+            provider = "fzf_lua",
             opts = {
                 show_preset_actions = false,
                 show_preset_prompts = false,
@@ -186,23 +187,51 @@ require("codecompanion").setup({
                 ["file"] = {
                     opts = { provider = "fzf_lua" },
                 },
+                ["buffer"] = {
+                    opts = { provider = "fzf_lua" },
+                },
             },
         },
         inline = { adapter = "sage" },
-        agent  = { adapter = "sage" },
     },
     adapters = {
         acp = {
             sage = function()
-                return require("codecompanion.adapters.acp").extend(
-                    require("codecompanion.adapters.acp.gemini_cli"),
-                    {
-                        name = "sage",
-                        commands = {
-                            default = { "sage", "acp" },
+                local helpers = require("codecompanion.adapters.acp.helpers")
+                return {
+                    name = "sage",
+                    formatted_name = "Sage",
+                    type = "acp",
+                    roles = {
+                        llm = "assistant",
+                        user = "user",
+                    },
+                    commands = {
+                        default = { "sage", "acp" },
+                        yolo    = { "sage", "acp", "--disable-sandbox" },
+                    },
+                    defaults = {
+                        mcpServers = {},
+                        timeout = 30000,
+                    },
+                    parameters = {
+                        protocolVersion = 1,
+                        clientCapabilities = {
+                            fs = { readTextFile = true, writeTextFile = true },
                         },
-                    }
-                )
+                        clientInfo = {
+                            name = "CodeCompanion.nvim",
+                            version = "1.0.0",
+                        },
+                    },
+                    handlers = {
+                        setup = function(self) return true end,
+                        form_messages = function(self, messages, capabilities)
+                            return helpers.form_messages(self, messages, capabilities)
+                        end,
+                        on_exit = function(self, code) end,
+                    },
+                }
             end,
         },
     },
