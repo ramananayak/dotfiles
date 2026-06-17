@@ -38,6 +38,7 @@ Software Lists
 
 - [Firefox browser, with profiles](https://www.firefox.com/en-US/)
 - [Linear Mouse](https://linearmouse.app/)
+- [Rectangle - Move and resize windows in macOS using keyboard shortcuts](https://rectangleapp.com/)
 - [Docker](https://www.docker.com/)
 - [Postman](https://www.postman.com/)
 - [Requestly - Lightweight API Client](https://requestly.com/)
