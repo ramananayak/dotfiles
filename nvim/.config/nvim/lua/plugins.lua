@@ -11,6 +11,7 @@ vim.pack.add({
     { src = "https://github.com/tpope/vim-fugitive" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/olimorris/codecompanion.nvim" },
+    { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 })
 
 require("nvim-web-devicons").setup()
@@ -148,6 +149,17 @@ require("fzf-lua").setup({
             ["ctrl-h"] = actions.toggle_hidden,
             ["enter"] = actions.file_edit_or_qf,
         },
+    },
+})
+
+require("render-markdown").setup({
+    file_types = { "markdown", "markdown.mdx", "codecompanion" },
+    completions = { blink = { enabled = true } },
+    heading = { position = "inline", icons = { "󰉫 ", "󰉬 ", "󰉭 ", "󰉮 ", "󰉯 ", "󰉰 " } },
+    code = { width = "block", min_width = 60, border = "thick" },
+    checkbox = {
+        unchecked = { icon = "󰄱 " },
+        checked   = { icon = "󰱒 " },
     },
 })
 

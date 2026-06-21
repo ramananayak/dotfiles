@@ -108,3 +108,20 @@ keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 keymap({ "n", "v" }, "<leader>ac", "<cmd>CodeCompanionChat<CR>", { desc = "CodeCompanion: open chat" })
 keymap({ "n", "v" }, "<leader>ai", "<cmd>CodeCompanionChat Add<CR>", { desc = "CodeCompanion: add selection to chat" })
 keymap("n", "<leader>at", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "CodeCompanion: toggle chat" })
+
+-- markdown (render-markdown.nvim + helpers)
+keymap("n", "<leader>mt", "<cmd>RenderMarkdown toggle<CR>", { desc = "Markdown: toggle render" })
+keymap("n", "<leader>me", "<cmd>RenderMarkdown expand<CR>",  { desc = "Markdown: expand anti-conceal" })
+keymap("n", "<leader>mc", "<cmd>RenderMarkdown contract<CR>", { desc = "Markdown: contract anti-conceal" })
+keymap("n", "<leader>mp", "<cmd>!open -a Firefox '%:p'<CR>", { desc = "Markdown: preview in browser", silent = true })
+
+-- toggle checkbox on current line
+keymap("n", "<leader>mx", function()
+    local line = vim.api.nvim_get_current_line()
+    if line:match("%[ %]") then
+        line = line:gsub("%[ %]", "[x]", 1)
+    elseif line:match("%[x%]") then
+        line = line:gsub("%[x%]", "[ ]", 1)
+    end
+    vim.api.nvim_set_current_line(line)
+end, { desc = "Markdown: toggle checkbox" })
