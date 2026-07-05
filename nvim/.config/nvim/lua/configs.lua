@@ -20,7 +20,8 @@ vim.opt.signcolumn = "yes"    -- Keep sign column open to prevent text shifting 
 vim.opt.cursorline = true     -- Highlight the line under the cursor
 vim.opt.wrap = false          -- Don't wrap long lines (standard for code)
 vim.opt.linebreak = true      -- When wrap is on, break at word boundaries
-vim.opt.textwidth = 80        -- Used by gq to hard-wrap text
+vim.opt.textwidth = 80        -- Used by gq to hard-wrap text on demand
+vim.opt.formatoptions:remove("t") -- Don't auto-wrap text while typing
 vim.opt.scrolloff = 8         -- Keep 8 lines visible above/below cursor when scrolling
 
 -- Indentation (Strict PEP 8 for Python)

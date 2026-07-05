@@ -1,7 +1,14 @@
 # ============================================================================
 # PATH Configuration
 # ============================================================================
-export PATH="/opt/homebrew/bin:/opt/homebrew/opt/libpq/bin:/opt/homebrew/opt/mysql-client/bin:$HOME/Library/Python/$(ls -1 $HOME/Library/Python | sort -V | tail -1)/bin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/opt/libpq/bin:/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+# Prepend user-site Python bin if it exists (macOS ~/Library/Python/<version>/bin)
+if [[ -d "$HOME/Library/Python" ]]; then
+    _py_ver=$(ls -1 "$HOME/Library/Python" 2>/dev/null | sort -V | tail -1)
+    [[ -n "$_py_ver" ]] && export PATH="$HOME/Library/Python/$_py_ver/bin:$PATH"
+    unset _py_ver
+fi
 
 # ============================================================================
 # Environment Variables

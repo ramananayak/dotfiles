@@ -5,8 +5,6 @@
 # Palettes must be defined _after_ this line
 palette = "catppuccin_mocha"
 
-command_timeout = 2000
-
 # Starship modules
 [character]
 success_symbol = "[[➜](bold green) ❯](peach)"

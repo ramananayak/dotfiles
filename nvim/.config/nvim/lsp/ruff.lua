@@ -4,7 +4,9 @@ return {
 	filetypes = { 'python' },
 	root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
 	settings = {
-		organizeImports = true,
-		fixAll = true,
+		ruff = {
+			organizeImports = true,
+			fixAll = true,
+		},
 	},
 }

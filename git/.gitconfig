@@ -10,7 +10,6 @@
 
 [advice]
 	addEmptyPathspec = false
-	pushNonFastForward = false
 	statusHints = false
 
 [alias]
@@ -36,7 +35,7 @@
 	ds = diff --staged
 	dom = diff origin/main
 	fo = fetch origin
-	fu = "!git log -n 16 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+	fu = "!git log -n 16 --pretty=format:'%h %s' --no-merges | fzf | awk '{print $1}' | xargs -o git commit --fixup"
 	g = grep --line-number
 	ignore = update-index --assume-unchanged
 	unignore = update-index --no-assume-unchanged
@@ -67,8 +66,13 @@
 	clean-dry = clean -fdn
 	undo = reset --soft HEAD~1
 	unstage = restore --staged
-	wd = diff --patience --word-diff
+	wd = diff --word-diff
 	wip = !git add -A && git commit -m "WIP" --no-verify
+	wt = worktree
+	wta = worktree add
+	wtl = worktree list
+	wtr = worktree remove
+	wtp = worktree prune
 [color]
 	ui = auto
 [core]

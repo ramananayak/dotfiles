@@ -8,11 +8,11 @@ Install with GNU stow
 # stow directory: dotfiles
 cd $HOME/dotfiles
 # dry run
-stow -nv --dotfiles kitty tmux nvim git zsh
+stow -nv --dotfiles nvim git zsh starship readline psql sqlite3 mysql
 
 # execute
 # ignore - pgcli , mycli, litecli (disabled)
-stow -v --dotfiles kitty tmux nvim git zsh
+stow -v --dotfiles nvim git zsh starship readline psql sqlite3 mysql
 
 # unstow
 stow -D zsh
@@ -31,7 +31,8 @@ xargs brew install < leaves.txt
 Backup all history
 
 ```bash
-cp $HOME/.cache
+# replace <backup-dir> with your target location
+rsync -a $HOME/.cache/ <backup-dir>/
 ```
 
 Software Lists

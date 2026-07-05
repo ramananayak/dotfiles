@@ -6,17 +6,21 @@ keymap("n", "<leader>", "<Nop>")
 -- Redo remap
 keymap("n", "U", "<C-r>")
 
--- Toggle line wrap
+-- Toggle soft-wrap for reading (visual only, doesn't modify file)
 keymap("n", "<leader>tw", function()
-    vim.opt.wrap = not vim.opt.wrap:get()
-end, { desc = "Toggle wrap" })
+    local on = not vim.opt_local.wrap:get()
+    vim.opt_local.wrap = on
+    vim.opt_local.linebreak = on  -- break at word boundaries
+    vim.opt_local.breakindent = on -- preserve indent on wrapped lines
+    vim.notify("Wrap " .. (on and "ON" or "OFF"))
+end, { desc = "Toggle soft-wrap" })
 
 -- Navigate visual lines when wrap is on
 keymap({ "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 keymap({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- after a search, press escape to clear highlights
-keymap("n", "<Esc>", ":nohl<CR>")
+keymap("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 keymap({ "n", "v", "x" }, "<leader>lf", function()
     local ft = vim.bo.filetype
@@ -45,7 +49,7 @@ keymap("n", "<leader>rr", ":wincmd r<CR>")
 
 -- Save and quit current file quicker
 keymap("n", "<leader>w", ":w<cr>", { silent = false, noremap = true })
-keymap({ "n", "t" }, "<leader>q", ":q<cr>", { silent = false, noremap = true })
+keymap("n", "<leader>q", ":q<cr>", { silent = false, noremap = true })
 
 -- create a new buffer
 keymap("n", "<leader>fn", ":enew<CR>", { desc = "New File" })
@@ -55,11 +59,11 @@ keymap("n", "[b", ":bprevious<CR>", { silent = false })
 keymap("n", "]b", ":bnext<CR>", { silent = false })
 
 -- Close currently active buffer
-keymap("n", "<C-c>", ":bwipeout<CR>", { silent = false })
+keymap("n", "<leader>bd", ":bwipeout<CR>", { silent = false, desc = "Buffer: wipeout" })
 
--- Center buffer when navigating up and down
-keymap("n", "<S-k>", "<C-u>zz")
-keymap("n", "<S-j>", "<C-d>zz")
+-- Center buffer when navigating up and down (half-page scroll)
+keymap("n", "<C-u>", "<C-u>zz")
+keymap("n", "<C-d>", "<C-d>zz")
 
 -- Center buffer when progressing through search results
 keymap("n", "n", "nzzzv")
@@ -70,8 +74,8 @@ keymap("n", "<leader>y", '"+y')
 keymap("v", "<leader>y", '"+y')
 keymap("n", "<leader>Y", '"+Y')
 
--- Put/Paste
-keymap("n", "<leader>p", '"+p')
+-- Put/Paste from system clipboard
+keymap("n", "<leader>P", '"+p', { desc = "Paste from system clipboard" })
 
 -- Move selection up and down
 keymap("v", "<C-j>", ":m '>+1<CR>gv=gv")
@@ -88,6 +92,19 @@ keymap("n", "<leader>fg", '<cmd>FzfLua live_grep<CR>')
 -- fugitive
 keymap("n", "<leader>gs", '<cmd>Git<CR>', { silent = true, noremap = true })
 keymap("n", "<leader>gp", '<cmd>Git push<CR>', { silent = false, noremap = true })
+
+-- worktree picker (fzf-lua, :tcd into selection)
+keymap("n", "<leader>gw", function()
+    require("fzf-lua").fzf_exec("git worktree list", {
+        prompt = "Worktree❯ ",
+        actions = {
+            ["default"] = function(selected)
+                local path = selected[1]:match("^(%S+)")
+                if path then vim.cmd("tcd " .. vim.fn.fnameescape(path)) end
+            end,
+        },
+    })
+end, { desc = "Git: switch worktree" })
 
 -- oil
 keymap("n", "-", "<CMD>Oil --float <CR>", { desc = "Open parent directory" })
