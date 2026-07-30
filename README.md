@@ -41,9 +41,11 @@ Software Lists
 - [Linear Mouse](https://linearmouse.app/)
 - [Rectangle - Move and resize windows in macOS using keyboard shortcuts](https://rectangleapp.com/)
 - [Docker](https://www.docker.com/)
+- [kind - local Kubernetes clusters](https://kind.sigs.k8s.io/)
 - [Postman](https://www.postman.com/)
-- [Requestly - Lightweight API Client](https://requestly.com/)
+- [Hoppscotch - OpenSource API Client](https://hoppscotch.com/)
 - [Obsidian - for notes](https://obsidian.md/)
 - [Readest](https://readest.com/)
 - [llama.cpp](https://github.com/ggml-org/llama.cpp)
 - [Superwhisper](https://superwhisper.com/)
+
