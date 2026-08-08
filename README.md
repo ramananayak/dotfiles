@@ -46,6 +46,7 @@ Software Lists
 - [Hoppscotch - OpenSource API Client](https://hoppscotch.com/)
 - [Obsidian - for notes](https://obsidian.md/)
 - [Readest](https://readest.com/)
+- [Syncthing - continuous file synchronization program](https://syncthing.net/)
 - [llama.cpp](https://github.com/ggml-org/llama.cpp)
 - [Superwhisper](https://superwhisper.com/)
 
