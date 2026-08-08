@@ -59,7 +59,15 @@ require('blink.cmp').setup({
         },
     },
 
-    sources = { default = { "lsp" } }
+    sources = {
+        default = { "lsp", "codecompanion" },
+        providers = {
+            codecompanion = {
+                name = "CodeCompanion",
+                module = "codecompanion.providers.completion.blink",
+            },
+        },
+    }
 })
 
 require("oil").setup({
@@ -117,6 +125,9 @@ require("oil").setup({
         show_hidden = true,
     },
 })
+
+-- Route vim.ui.select (LSP code actions, references, etc.) through fzf-lua
+require("fzf-lua").register_ui_select()
 
 local actions = require("fzf-lua.actions")
 require("fzf-lua").setup({
@@ -196,12 +207,9 @@ require("codecompanion").setup({
                 completion_provider = "blink",
             },
             slash_commands = {
-                ["file"] = {
-                    opts = { provider = "fzf_lua" },
-                },
-                ["buffer"] = {
-                    opts = { provider = "fzf_lua" },
-                },
+                ["file"]     = { opts = { provider = "fzf_lua" } },
+                ["buffer"]   = { opts = { provider = "fzf_lua" } },
+                ["terminal"] = {},
             },
         },
         inline = { adapter = "sage" },
