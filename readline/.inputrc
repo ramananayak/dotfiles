@@ -2,8 +2,6 @@
 set completion-ignore-case on
 set show-all-if-ambiguous on
 
-# Vi keybindings for psql only
-$if psql
+# Global Vi keybindings for all Readline CLIs (psql, mysql, python, sqlite3, etc.)
 set editing-mode vi
 set keymap vi-command
-$endif

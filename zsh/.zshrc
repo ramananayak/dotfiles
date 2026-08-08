@@ -48,3 +48,39 @@ BREW_PREFIX=/opt/homebrew
 # Prompt Initialization
 # ============================================================================
 eval "$(starship init zsh)"
+
+# ============================================================================
+# Vi Keybindings (Vim Motions)
+# ============================================================================
+bindkey -v                    # Enable Vi mode in Zsh
+export KEYTIMEOUT=1           # Reduce mode-switching delay to 10ms (default is 400ms)
+
+# Custom cursor shape for Vi mode (Block cursor for Normal, Beam for Insert)
+function zsh_cursor_vi_mode() {
+    echo -ne "\e[2 q"         # Block cursor
+}
+function zsh_cursor_insert_mode() {
+    echo -ne "\e[5 q"         # Beam/Line cursor
+}
+
+# Integrate with zsh line editor widgets to change cursor on mode switch
+zle-keymap-select() {
+    if [[ $KEYMAP == 'vicmd' ]]; then
+        zsh_cursor_vi_mode
+    else
+        zsh_cursor_insert_mode
+    fi
+}
+zle-line-init() {
+    zle -K viins              # Always start in Insert mode
+    zsh_cursor_insert_mode
+}
+
+zle -N zle-keymap-select
+zle -N zle-line-init
+
+# Fix backspace and delete behavior in Vi Insert mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^u' backward-kill-line

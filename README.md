@@ -2,20 +2,22 @@
 
 managed with [GNU Stow](https://www.gnu.org/software/stow/)
 
-Install with GNU stow
+## Installation
+
+Install with GNU Stow by explicitly targeting your home directory (`~` or `$HOME`):
 
 ```bash
-# stow directory: dotfiles
-cd $HOME/dotfiles
-# dry run
-stow -nv --dotfiles nvim git zsh starship readline psql sqlite3 mysql
+# Enter dotfiles directory
+cd ~/Repositories/Personal/dotfiles
 
-# execute
-# ignore - pgcli , mycli, litecli (disabled)
-stow -v --dotfiles nvim git zsh starship readline psql sqlite3 mysql
+# dry run
+stow -nv -t ~ nvim git zsh starship readline psql sqlite3 mysql
+
+# execute (ignore pgcli, mycli, litecli)
+stow -v -t ~ nvim git zsh starship readline psql sqlite3 mysql
 
 # unstow
-stow -D zsh
+stow -D -t ~ zsh
 ```
 
 Homebrew installation
