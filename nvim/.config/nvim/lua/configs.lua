@@ -43,5 +43,9 @@ vim.opt.swapfile = false    -- Don't create swap files
 vim.opt.undofile = true    -- Persistent undo: remembers changes after closing file
 vim.opt.updatetime = 250   -- Faster response time for UI/LSP (default is 4000ms)
 
+-- Split behaviour
+vim.opt.splitright = true  -- vertical splits open to the right
+vim.opt.splitbelow = true  -- horizontal splits open below
+
 -- Theme
 vim.cmd.colorscheme("catppuccin")
