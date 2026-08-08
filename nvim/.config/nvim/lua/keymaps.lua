@@ -111,6 +111,10 @@ end, { desc = "Git: switch worktree" })
 -- oil
 keymap("n", "-", "<CMD>Oil --float <CR>", { desc = "Open parent directory" })
 
+-- Terminal splits
+keymap("n", "<leader>tv", "<cmd>vsplit | terminal<CR>", { desc = "Terminal: vertical split (right)" })
+keymap("n", "<leader>th", "<cmd>split | terminal<CR>",  { desc = "Terminal: horizontal split (below)" })
+
 -- Exit terminal with Esc
 keymap("t", "<Esc>", "<C-\\><C-N>")
 
