@@ -172,6 +172,9 @@ require("render-markdown").setup({
         unchecked = { icon = "󰄱 " },
         checked   = { icon = "󰱒 " },
     },
+    html = { enabled = false },
+    latex = { enabled = false },
+    yaml = { enabled = false },
 })
 
 require("codecompanion").setup({
