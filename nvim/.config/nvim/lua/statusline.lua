@@ -105,30 +105,30 @@ vim.keymap.set("n", "<leader>sb", function() Statusline.toggle_branch() end, { d
 local group = vim.api.nvim_create_augroup("Statusline", { clear = true })
 
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
-  group = group,
-  desc = "Activate statusline on focus",
-  callback = function()
-    if vim.bo.buftype ~= "" then
-        return
-    end
-    if vim.api.nvim_win_get_config(0).relative ~= "" then
-        return
-    end
-    vim.opt_local.statusline = "%!v:lua.Statusline.active()"
-    vim.cmd("redrawstatus")
-  end,
+    group = group,
+    desc = "Activate statusline on focus",
+    callback = function()
+        if vim.bo.buftype ~= "" then
+            return
+        end
+        if vim.api.nvim_win_get_config(0).relative ~= "" then
+            return
+        end
+        vim.opt_local.statusline = "%!v:lua.Statusline.active()"
+        vim.cmd("redrawstatus")
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
-  group = group,
-  desc = "Deactivate statusline when unfocused",
-  callback = function()
-    if vim.bo.buftype ~= "" then
-        return
-    end
-    if vim.api.nvim_win_get_config(0).relative ~= "" then
-        return
-    end
-    vim.opt_local.statusline = "%!v:lua.Statusline.inactive()"
-  end,
+    group = group,
+    desc = "Deactivate statusline when unfocused",
+    callback = function()
+        if vim.bo.buftype ~= "" then
+            return
+        end
+        if vim.api.nvim_win_get_config(0).relative ~= "" then
+            return
+        end
+        vim.opt_local.statusline = "%!v:lua.Statusline.inactive()"
+    end,
 })

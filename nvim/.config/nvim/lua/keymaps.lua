@@ -10,7 +10,7 @@ keymap("n", "U", "<C-r>")
 keymap("n", "<leader>tw", function()
     local on = not vim.opt_local.wrap:get()
     vim.opt_local.wrap = on
-    vim.opt_local.linebreak = on  -- break at word boundaries
+    vim.opt_local.linebreak = on   -- break at word boundaries
     vim.opt_local.breakindent = on -- preserve indent on wrapped lines
     vim.notify("Wrap " .. (on and "ON" or "OFF"))
 end, { desc = "Toggle soft-wrap" })
@@ -88,7 +88,7 @@ keymap("n", "<leader>ps", '<cmd>lua vim.pack.update()<CR>')
 keymap("n", "<leader>ff", '<cmd>FzfLua files<CR>')
 keymap("n", "<leader>fb", '<cmd>FzfLua buffers<CR>')
 keymap("n", "<leader>fg", '<cmd>FzfLua live_grep<CR>')
-keymap("n", "<leader>fw", '<cmd>FzfLua grep_cword<CR>',  { desc = "Grep: word under cursor" })
+keymap("n", "<leader>fw", '<cmd>FzfLua grep_cword<CR>', { desc = "Grep: word under cursor" })
 keymap("v", "<leader>fw", '<cmd>FzfLua grep_visual<CR>', { desc = "Grep: visual selection" })
 
 -- fugitive
@@ -113,33 +113,33 @@ keymap("n", "-", "<CMD>Oil --float <CR>", { desc = "Open parent directory" })
 
 -- Terminal splits
 keymap("n", "<leader>tv", "<cmd>vsplit | terminal<CR>", { desc = "Terminal: vertical split (right)" })
-keymap("n", "<leader>th", "<cmd>split | terminal<CR>",  { desc = "Terminal: horizontal split (below)" })
+keymap("n", "<leader>th", "<cmd>split | terminal<CR>", { desc = "Terminal: horizontal split (below)" })
 
 -- Exit terminal with Esc
 keymap("t", "<Esc>", "<C-\\><C-N>")
 
 -- LSP keybindings
-keymap("n", "gd", vim.lsp.buf.definition,    { desc = "Go to definition" })
-keymap("n", "gD", vim.lsp.buf.declaration,   { desc = "Go to declaration" })
-keymap("n", "gr", vim.lsp.buf.references,    { desc = "Find references" })
+keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+keymap("n", "gr", vim.lsp.buf.references, { desc = "Find references" })
 keymap("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
-keymap("n", "K",  vim.lsp.buf.hover,          { desc = "Hover documentation" })
-keymap("n", "<leader>rn", vim.lsp.buf.rename,       { desc = "Rename symbol" })
-keymap("n", "<leader>ca", vim.lsp.buf.code_action,  { desc = "Code action" })
-keymap("n", "<leader>e",  vim.diagnostic.open_float, { desc = "Diagnostic: show" })
+keymap("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
+keymap("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Diagnostic: show" })
 keymap("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Diagnostic: prev" })
-keymap("n", "]d", function() vim.diagnostic.jump({ count =  1 }) end, { desc = "Diagnostic: next" })
+keymap("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Diagnostic: next" })
 
 -- codecompanion (sage AI)
-keymap({ "n", "v" }, "<leader>ac", "<cmd>CodeCompanionChat<CR>",        { desc = "CodeCompanion: open chat" })
-keymap({ "n", "v" }, "<leader>ai", "<cmd>CodeCompanionChat Add<CR>",    { desc = "CodeCompanion: add selection to chat" })
-keymap("n",          "<leader>at", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "CodeCompanion: toggle chat" })
-keymap({ "n", "v" }, "<leader>aa", "<cmd>CodeCompanion<CR>",            { desc = "CodeCompanion: inline action" })
-keymap("n",          "<leader>am", "<cmd>CodeCompanionActions<CR>",     { desc = "CodeCompanion: action palette" })
+keymap({ "n", "v" }, "<leader>ac", "<cmd>CodeCompanionChat<CR>", { desc = "CodeCompanion: open chat" })
+keymap({ "n", "v" }, "<leader>ai", "<cmd>CodeCompanionChat Add<CR>", { desc = "CodeCompanion: add selection to chat" })
+keymap("n", "<leader>at", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "CodeCompanion: toggle chat" })
+keymap({ "n", "v" }, "<leader>aa", "<cmd>CodeCompanion<CR>", { desc = "CodeCompanion: inline action" })
+keymap("n", "<leader>am", "<cmd>CodeCompanionActions<CR>", { desc = "CodeCompanion: action palette" })
 
 -- markdown (render-markdown.nvim + helpers)
 keymap("n", "<leader>mt", "<cmd>RenderMarkdown toggle<CR>", { desc = "Markdown: toggle render" })
-keymap("n", "<leader>me", "<cmd>RenderMarkdown expand<CR>",  { desc = "Markdown: expand anti-conceal" })
+keymap("n", "<leader>me", "<cmd>RenderMarkdown expand<CR>", { desc = "Markdown: expand anti-conceal" })
 keymap("n", "<leader>mc", "<cmd>RenderMarkdown contract<CR>", { desc = "Markdown: contract anti-conceal" })
 keymap("n", "<leader>mp", "<cmd>!open -a Firefox '%:p'<CR>", { desc = "Markdown: preview in browser", silent = true })
 
