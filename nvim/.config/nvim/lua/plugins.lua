@@ -167,7 +167,7 @@ require("render-markdown").setup({
     file_types = { "markdown", "markdown.mdx", "codecompanion" },
     completions = { blink = { enabled = true } },
     heading = { position = "inline", icons = { "󰉫 ", "󰉬 ", "󰉭 ", "󰉮 ", "󰉯 ", "󰉰 " } },
-    code = { width = "block", min_width = 60, border = "thick" },
+    code = { width = "normal", border = "thick" },
     checkbox = {
         unchecked = { icon = "󰄱 " },
         checked   = { icon = "󰱒 " },

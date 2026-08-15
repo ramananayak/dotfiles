@@ -111,9 +111,45 @@ end, { desc = "Git: switch worktree" })
 -- oil
 keymap("n", "-", "<CMD>Oil --float <CR>", { desc = "Open parent directory" })
 
+-- Helper to open existing terminal buffer or create a new one
+local function open_terminal(split_cmd, force_new)
+    local term_buf = nil
+    if not force_new then
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.api.nvim_buf_is_valid(buf) then
+                local name = vim.api.nvim_buf_get_name(buf)
+                local buftype = ""
+                pcall(function() buftype = vim.bo[buf].buftype end)
+                local filetype = ""
+                pcall(function() filetype = vim.bo[buf].filetype end)
+
+                -- Ensure we match terminal buffers, but exclude fzf-lua terminal buffers
+                if (buftype == "terminal" or string.match(name, "^term://"))
+                    and filetype ~= "fzf"
+                    and not string.match(name, "fzf") then
+                    term_buf = buf
+                    break
+                end
+            end
+        end
+    end
+
+    vim.cmd(split_cmd)
+    if term_buf then
+        vim.cmd("buffer " .. term_buf)
+    else
+        vim.cmd("terminal")
+    end
+end
+
 -- Terminal splits
-keymap("n", "<leader>tv", "<cmd>vsplit | terminal<CR>", { desc = "Terminal: vertical split (right)" })
-keymap("n", "<leader>th", "<cmd>split | terminal<CR>", { desc = "Terminal: horizontal split (below)" })
+-- Option 1: Reopen the same terminal if it exists, otherwise create a new one
+keymap("n", "<leader>tv", function() open_terminal("vsplit", false) end, { desc = "Terminal: vertical split (re-use)" })
+keymap("n", "<leader>th", function() open_terminal("split", false) end, { desc = "Terminal: horizontal split (re-use)" })
+
+-- Option 2: Always spawn a new terminal buffer
+keymap("n", "<leader>tV", function() open_terminal("vsplit", true) end, { desc = "Terminal: vertical split (always new)" })
+keymap("n", "<leader>tH", function() open_terminal("split", true) end, { desc = "Terminal: horizontal split (always new)" })
 
 -- Exit terminal with Esc
 keymap("t", "<Esc>", "<C-\\><C-N>")
