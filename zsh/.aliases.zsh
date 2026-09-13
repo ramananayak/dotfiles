@@ -87,8 +87,15 @@ alias kcheat='nvim ~/.config/kitty/CHEATSHEET.md'
 # Kitty terminal alias
 alias icat="kitten icat"
 
+# local llm usage
 # Use local llm model with llama.cpp
-alias qwen='llama-cli -m ~/Library/Caches/llama.cpp/Qwen_Qwen3-8B-GGUF_Qwen3-8B-Q8_0.gguf --jinja --color auto -ngl 99 -fa auto -sm row --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 1.5 -c 40960 -n 32768 --no-context-shift'
+alias qwen='llama-cli --hf-repo unsloth/Qwen3.5-9B-GGUF --hf-file Qwen3.5-9B-Q8_0.gguf --jinja --color auto -ngl 99 -fa auto -temp 0.7 --min-p 0.05 -c 40960 -n 32768 --no-context-shift'
+
+# Llama Server Management
+alias llama-start="llama-server --hf-repo unsloth/Qwen3.5-9B-GGUF --hf-file Qwen3.5-9B-Q8_0.gguf -ngl 99 -fa auto --temp 0.7 --min-p 0.05 -c 40960 --host 127.0.0.1 --port 8080 --ui-config '{\"systemMessage\":\"You are a highly efficient, precise AI assistant. Provide direct answers with minimal fluff. Always prioritize clarity, accuracy, and brevity. Use structured formatting or code blocks only when helpful.\"}' > /tmp/llama.log 2>&1 & echo 'Llama server started on http://127.0.0.1:8080'"
+alias llama-start-agent="llama-server --hf-repo unsloth/Qwen3.5-9B-GGUF --hf-file Qwen3.5-9B-Q8_0.gguf -ngl 99 -fa auto --temp 0.7 --min-p 0.05 -c 40960 --host 127.0.0.1 --port 8080 --tools all --ui-config '{\"systemMessage\":\"You are a highly efficient, precise AI assistant. Provide direct answers with minimal fluff. Always prioritize clarity, accuracy, and brevity. Use structured formatting or code blocks only when helpful.\"}' > /tmp/llama.log 2>&1 & echo 'Llama agent server started with local file tools on http://127.0.0.1:8080'"
+alias llama-stop="pkill -f llama-server && echo 'Llama server stopped'"
+alias llama-status="ps aux | grep llama-server | grep -v grep"
 
 # Git worktree: fuzzy-switch to a worktree of the current repo
 gwt() {

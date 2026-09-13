@@ -11,6 +11,7 @@ vim.pack.add({
     { src = "https://github.com/tpope/vim-fugitive" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/olimorris/codecompanion.nvim" },
+    { src = "https://github.com/tpope/vim-surround" },
     { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" }
 })
 

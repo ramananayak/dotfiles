@@ -20,6 +20,9 @@ export SAVEHIST=10000
 export MYSQL_HISTFILE="$HOME/.cache/mysql/.mysql_history"
 export SQLITE_HISTORY="$HOME/.cache/sqlite/.sqlite_history"
 
+# Clean scratch files older than 30 days
+[[ -d "$HOME/.cache/scratch" ]] && find "$HOME/.cache/scratch" -type f -mtime +30 -delete 2>/dev/null
+
 # ============================================================================
 # Zsh Options
 # ============================================================================

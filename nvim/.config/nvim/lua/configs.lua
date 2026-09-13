@@ -49,3 +49,9 @@ vim.opt.splitbelow = true -- horizontal splits open below
 
 -- Theme
 vim.cmd.colorscheme("catppuccin")
+
+-- vim-surround custom definitions
+-- 'c' / 'C': Surround with Markdown code block (prompts for language, press Enter for none)
+vim.g["surround_" .. string.byte("c")] = "```\1language: \1\r```"
+vim.g["surround_" .. string.byte("C")] = "```\1language: \1\r```"
+

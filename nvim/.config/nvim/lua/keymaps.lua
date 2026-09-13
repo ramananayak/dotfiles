@@ -91,6 +91,26 @@ keymap("n", "<leader>fg", '<cmd>FzfLua live_grep<CR>')
 keymap("n", "<leader>fw", '<cmd>FzfLua grep_cword<CR>', { desc = "Grep: word under cursor" })
 keymap("v", "<leader>fw", '<cmd>FzfLua grep_visual<CR>', { desc = "Grep: visual selection" })
 
+-- scratchpad
+local scratch_dir = vim.fn.expand("~/.cache/scratch")
+keymap("n", "<leader>sn", function()
+    if vim.fn.isdirectory(scratch_dir) == 0 then
+        vim.fn.mkdir(scratch_dir, "p")
+    end
+    local filepath = scratch_dir .. "/" .. os.date("%Y-%m-%d_%H%M%S") .. ".md"
+    vim.cmd("edit " .. filepath)
+end, { desc = "Scratch: new file" })
+
+keymap("n", "<leader>fs", function()
+    if vim.fn.isdirectory(scratch_dir) == 0 then
+        vim.fn.mkdir(scratch_dir, "p")
+    end
+    require("fzf-lua").files({
+        cwd = scratch_dir,
+        prompt = "Scratchpads❯ ",
+    })
+end, { desc = "Scratch: search files" })
+
 -- fugitive
 keymap("n", "<leader>gs", '<cmd>Git<CR>', { silent = true, noremap = true })
 keymap("n", "<leader>gp", '<cmd>Git push<CR>', { silent = false, noremap = true })
